@@ -6,7 +6,7 @@
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 16:15:14 by rmartins          #+#    #+#             */
-/*   Updated: 2021/04/26 16:28:02 by rmartins         ###   ########.fr       */
+/*   Updated: 2021/04/26 17:25:56 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@
 void	print_result(int result);
 void	make_test_strlen(void);
 void	make_test_strcpy(void);
+void	make_test_strcmp(void);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/17 17:15:21 by rmartins          #+#    #+#              #
-#    Updated: 2021/04/26 16:29:14 by rmartins         ###   ########.fr        #
+#    Updated: 2021/04/26 17:33:29 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRC_DIR = src
 OBJ = $(SRC:%.s=$(OBJ_DIR)/%.o)
 
 SRC = ft_strlen.s \
-		ft_strcpy.s
+		ft_strcpy.s \
+		ft_strcmp.s
 
 
 all: $(NAME)
@@ -62,7 +63,8 @@ OBJ_DIR_TESTER = $(OBJ_DIR)/tester_obj
 
 SRC_TESTER = main.c \
 			test_strlen.c \
-			test_strcpy.c
+			test_strcpy.c \
+			test_strcmp.c
 
 OBJ_TESTER = $(SRC_TESTER:%.c=$(OBJ_DIR_TESTER)/%.o)
 	# mkdir -p $(dir $@)
@@ -74,7 +76,7 @@ $(OBJ_DIR_TESTER)/%.o: $(SRC_DIR_TESTER)/%.c
 
 
 tester: all $(OBJ_TESTER)
-	gcc $(CFLAGS) $(OBJ_TESTER) $(NAME) -o $(TESTER)
+	gcc $(CFLAGS) -fsanitize=address $(OBJ_TESTER) $(NAME) -o $(TESTER)
 
 runtester: tester
 	./$(TESTER)
