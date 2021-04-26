@@ -7,10 +7,11 @@ ft_strcpy:
 	mov		rcx, 0		; rcx = 0
 	
 loop:
-	mov		al, [rsi + rcx]
-	mov		[rdi + rcx], al
+	mov		al, [rsi + rcx]		; temp = src[i]
+								; use al to save only the least significat byte
+	mov		[rdi + rcx], al		; dest[i] = temp
 	cmp		al, 0
-	je exit					; if (str[i] == '\0') {exit}
+	je exit					; if (temp == '\0') {exit}
 	inc rcx					; rcx++
 	jmp loop
 
