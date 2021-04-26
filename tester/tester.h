@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   tester.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 16:16:44 by rmartins          #+#    #+#             */
-/*   Updated: 2021/04/26 16:28:16 by rmartins         ###   ########.fr       */
+/*   Created: 2021/04/26 16:15:14 by rmartins          #+#    #+#             */
+/*   Updated: 2021/04/26 16:28:02 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tester.h"
+#ifndef TESTER_H
+# define TESTER_H
 
-void	print_result(int result)
-{
-	if (result == 1)
-		printf(ANSI_F_GREEN "✓" ANSI_RESET);
-	else
-		printf(ANSI_F_RED "✗" ANSI_RESET);
-}
+# include "../inc/libasm.h"
+# include "../inc/ft_ansi.h"
+# include <stdio.h>
+# include <string.h>
 
-int	main(void)
-{
-	make_test_strlen();
-	make_test_strcpy();
-	printf("\n");
-	return (0);
-}
+void	print_result(int result);
+void	make_test_strlen(void);
+void	make_test_strcpy(void);
+
+#endif

@@ -1,6 +1,6 @@
-global ft_strlen
+global ft_strcpy
 
-ft_strlen:
+ft_strcpy:
 	push	rbp			; Function Prologue
 	mov		rbp, rsp
 

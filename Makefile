@@ -6,12 +6,13 @@
 #    By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/17 17:15:21 by rmartins          #+#    #+#              #
-#    Updated: 2021/04/17 20:09:28 by rmartins         ###   ########.fr        #
+#    Updated: 2021/04/26 16:29:14 by rmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =			libasm.a
 HEADER =		libasm.h
+TESTER =		tester.out
 
 UNAME := $(shell uname -s)
 ifeq ($(UNAME), Linux)
@@ -25,7 +26,8 @@ OBJ_DIR = obj
 SRC_DIR = src
 OBJ = $(SRC:%.s=$(OBJ_DIR)/%.o)
 
-SRC = ft_strlen.s
+SRC = ft_strlen.s \
+		ft_strcpy.s
 
 
 all: $(NAME)
@@ -33,7 +35,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $?
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.s
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.s $(addprefix inc/,$(HEADER))
 	mkdir -p $(dir $@)
 	nasm $(ASM_FLAGS) $< -o $@
 
@@ -47,6 +49,7 @@ clean:
 fclean: clean
 	@echo $(ANSI_B_RED) "fclean" $(ANSI_RESET)$(ANSI_F_BRED)
 	rm -f $(NAME)
+	rm -f $(TESTER)
 	@echo $(ANSI_RESET) ""
 
 re: fclean all
@@ -55,19 +58,26 @@ re: fclean all
 # tester
 CFLAGS = -Wall -Wextra -Werror -g
 SRC_DIR_TESTER = tester
-OBJ_DIR_TESTER = tester_obj
+OBJ_DIR_TESTER = $(OBJ_DIR)/tester_obj
 
-SRC_TESTER = main.c
+SRC_TESTER = main.c \
+			test_strlen.c \
+			test_strcpy.c
 
-OBJ_TESTER = $(SRC_DIR_TESTER:%.c=$(OBJ_DIR_TESTE)/%.o)
+OBJ_TESTER = $(SRC_TESTER:%.c=$(OBJ_DIR_TESTER)/%.o)
+	# mkdir -p $(dir $@)
+	# gcc $(CFLAGS) $(SYSTEM) -Iinc -c $< -o $@
+
 $(OBJ_DIR_TESTER)/%.o: $(SRC_DIR_TESTER)/%.c
 	mkdir -p $(dir $@)
 	gcc $(CFLAGS) -c $< -o $@
 
-tester: $(OBJ_TESTER)
-	gcc $(CFLAGS) $(OBJ_TESTER) $(NAME) -o tester
-	./tester
 
+tester: all $(OBJ_TESTER)
+	gcc $(CFLAGS) $(OBJ_TESTER) $(NAME) -o $(TESTER)
+
+runtester: tester
+	./$(TESTER)
 
 .PHONY: all clean fclean tester
 
