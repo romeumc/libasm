@@ -28,8 +28,8 @@ loop:
 	jmp		loop		; Loop
 
 exit:
+	mov		rax, rdx	; return value of diference (temp)
+	
 	mov		rsp, rbp	; Function Epilogue
 	pop		rbp
-
-	mov		rax, rdx	; return value of diference (temp)
 	ret

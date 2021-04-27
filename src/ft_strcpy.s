@@ -16,8 +16,8 @@ loop:
 	jmp loop
 
 exit:
+	mov		rax, rdi
+
 	mov		rsp, rbp	; Function Epilogue
 	pop		rbp
-
-	mov		rax, rdi
 	ret

@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tester.h                                           :+:      :+:    :+:   */
+/*   test_read.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmartins <rmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 16:15:14 by rmartins          #+#    #+#             */
-/*   Updated: 2021/04/27 12:57:39 by rmartins         ###   ########.fr       */
+/*   Created: 2021/04/26 21:44:23 by rmartins          #+#    #+#             */
+/*   Updated: 2021/04/27 12:54:36 by rmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTER_H
-# define TESTER_H
+#include "tester.h"
 
-# include "../inc/libasm.h"
-# include "../inc/ft_ansi.h"
-# include <stdio.h>
-# include <string.h>
+int	test_read(int fd, char *str, size_t len)
+{
+	
+	// if (ft_strlen(str) == strlen(str))
+	// 	return (1);
+	// else
+		return (0);
+}
 
-void	print_result(int result);
-void	make_test_strlen(void);
-void	make_test_strcpy(void);
-void	make_test_strcmp(void);
-void	make_test_write(void);
-void	make_test_read(void);
-void	make_test_strdup(void);
+void	make_test_read(void)
+{
+	char	*str;
 
-#endif
+	str = strdup("Hello world");
+	printf(ANSI_F_CYAN "ft_read \t " ANSI_RESET);
+	print_result(test_write(1, str, strlen(str)));
+	printf("\n");
+}
