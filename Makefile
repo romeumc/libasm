@@ -30,8 +30,8 @@ SRC = ft_strlen.s \
 		ft_strcpy.s \
 		ft_strcmp.s \
 		ft_strdup.s \
-		# ft_write.s \
-		# ft_read.s \
+		ft_write.s \
+		ft_read.s \
 
 
 all: $(NAME)
@@ -69,8 +69,8 @@ SRC_TESTER = main.c \
 			test_strcpy.c \
 			test_strcmp.c \
 			test_strdup.c \
-			# test_write.c \
-			# test_read.c \
+			test_write.c \
+			test_read.c \
 
 OBJ_TESTER = $(SRC_TESTER:%.c=$(OBJ_DIR_TESTER)/%.o)
 	# mkdir -p $(dir $@)

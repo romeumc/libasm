@@ -12,21 +12,32 @@
 
 #include "tester.h"
 
-int	test_read(int fd, char *str, size_t len)
+void	test_read(int fd, char *buffer, int len)
 {
-	
-	// if (ft_strlen(str) == strlen(str))
-	// 	return (1);
-	// else
-		return (0);
+	write(1, "Expected\t", 9);
+	read(fd, buffer, len);
+	printf("\t errno:%d [%s]\n", errno, strerror(errno));
+	errno = 0;
+	write(1, "Result\t\t", 8);
+	ft_read(fd, buffer, len);
+	printf("\t errno:%d [%s]\n", errno, strerror(errno));
+	errno = 0;
 }
 
 void	make_test_read(void)
 {
-	char	*str;
+	char	buffer[100];
+	int		fd;
 
-	str = strdup("Hello world");
-	printf(ANSI_F_CYAN "ft_read \t " ANSI_RESET);
-	print_result(test_write(1, str, strlen(str)));
+	//buffer = strdup("Hello world!");
+	// printf(ANSI_F_CYAN "\nft_read on standard output" ANSI_RESET "\n");
+	// test_read(1, buffer, 100);
+	printf(ANSI_F_CYAN "ft_read on invalid fd (-1)" ANSI_RESET "\n");
+	test_read(-1, buffer, 100);
+	printf(ANSI_F_CYAN "ft_read on inixisting fd (42)" ANSI_RESET "\n");
+	test_read(42, buffer, 100);
+	printf(ANSI_F_CYAN "ft_read on file romeu.txt" ANSI_RESET "\n");
+	fd = open("romeu.txt", O_RDONLY);
+	test_read(fd, buffer, 100);
 	printf("\n");
 }

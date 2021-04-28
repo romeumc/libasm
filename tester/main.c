@@ -25,8 +25,8 @@ int	main(void)
 	make_test_strlen();
 	make_test_strcpy();
 	make_test_strcmp();
-	//make_test_write();
-	//make_test_read();
 	make_test_strdup();
+	make_test_write();
+	make_test_read();
 	return (0);
 }

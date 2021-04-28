@@ -17,6 +17,8 @@
 # include "../inc/ft_ansi.h"
 # include <stdio.h>
 # include <string.h>
+# include <errno.h>
+# include <fcntl.h>
 
 void	print_result(int result);
 void	make_test_strlen(void);

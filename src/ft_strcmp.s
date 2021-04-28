@@ -1,6 +1,6 @@
-global ft_strcmp
+global _ft_strcmp
 
-ft_strcmp:
+_ft_strcmp:
 	push	rbp			; Function Prologue
 	mov		rbp, rsp
 

@@ -1,21 +1,21 @@
-global	ft_read
+global	_ft_write
 extern	___error
 
-ft_read:
-	push	rbp			; Function Prologue
-	mov		rbp, rsp
+_ft_write:
+	; push		rbp			; Function Prologue
+	; mov		rbp, rsp
 	
-	mov		rax, 0x2000003
+	mov		rax, 0x2000004
 	syscall
-	jc		error
+	jc		error			; jump if flag carry
 
-	mov		rsp, rbp	; Function Epilogue
-	pop		rbp
+	; mov		rsp, rbp	; Function Epilogue
+	; pop		rbp
 	ret
 
 error:
-	mov		r8, rax
+	mov		rdx, rax
 	call	___error
-	mov		[rax], r8
+	mov		[rax], rdx
 	mov		rax, -1
 	ret
