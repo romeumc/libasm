@@ -43,8 +43,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.s $(addprefix inc/,$(HEADER))
 	mkdir -p $(dir $@)
 	nasm $(ASM_FLAGS) $< -o $@
 
-
-
 clean:
 	@echo $(ANSI_B_RED) "clean" $(ANSI_RESET)$(ANSI_F_BRED)
 	rm -rf $(OBJ_DIR)
@@ -54,6 +52,7 @@ fclean: clean
 	@echo $(ANSI_B_RED) "fclean" $(ANSI_RESET)$(ANSI_F_BRED)
 	rm -f $(NAME)
 	rm -f $(TESTER)
+	rm -f romeu.txt
 	@echo $(ANSI_RESET) ""
 
 re: fclean all
